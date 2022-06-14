@@ -1,0 +1,23 @@
+manifest:
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+    - name: lua
+      url-base: https://github.com/lua
+
+  projects:
+    - name: lua
+      remote: lua
+      repo-path: lua
+      revision: v5.4.4
+      path: app/lua
+    - name: zephyr
+      remote: zephyrproject-rtos
+      repo-path: zephyr
+      clone-depth: 1
+      revision: main
+      import: true
+      path: zephyr
+
+  self:
+    path: app
