@@ -34,7 +34,7 @@ or change the last command by:
 $ ninja run
 ```
 
-Yo can change the target board, for instance for a nxp discovery l475 iot1 you
+Yo can change the target board, for instance for a st discovery l475 iot1 you
 can use:
 
 ```bash
