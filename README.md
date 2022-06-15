@@ -47,10 +47,23 @@ you will get a message in the standard output (monitor it with minicomo or
 similar program in the case you are using an external board) similar to this:
 
 ```
-*** Booting Zephyr OS build 70cca36acc29  ***
+*** Booting Zephyr OS build 3f8d5c49b3fb  ***
 Starting lua code
 Hello from Lua
 Test Done!
 ```
 
+## Missing newlib stubs
+
+We had to add a "operation not supported" implementation for three newlib stubs
+that seems no to be implemented by the newlib libc that ships with zephyr. These
+three stubs, implemented in the src/missing_stubs.c file, are:
+
+```c
+clock_t _times(struct tms* tms);
+int _unlink(const char *pathname);
+int _link(const char *oldpath, const char *newpath);
+```
+
+Any help to solve this issue will be appreciated.
 
