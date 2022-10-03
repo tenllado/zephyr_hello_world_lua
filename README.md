@@ -3,7 +3,7 @@
 
 ## Development setup
 
-You should have west installed. Then go to the directory where you want the sol
+You should have west installed. Then go to the directory where you want the 
 workspace to be created and then run de following commands:
 
 ```bash
