@@ -1,6 +1,5 @@
 # Zephyr Hello World example with Lua
 
-
 ## Development setup
 
 You should have west installed. Then go to the directory where you want the 
@@ -53,17 +52,16 @@ Hello from Lua
 Test Done!
 ```
 
-## Missing newlib stubs
+## Missing newlib stubs in Zephyr
 
-We had to add a "operation not supported" implementation for three newlib stubs
-that seems no to be implemented by the newlib libc that ships with zephyr. These
-three stubs, implemented in the src/missing_stubs.c file, are:
+We had to add some implementation for two newlib stubs that seem not to be
+implemented by zephyr:
 
 ```c
 clock_t _times(struct tms* tms);
 int _unlink(const char *pathname);
-int _link(const char *oldpath, const char *newpath);
 ```
 
-Any help to solve this issue will be appreciated.
+These implementations are provided in the src/missing_stubs.c file. Any help to
+solve this issue will be appreciated.
 

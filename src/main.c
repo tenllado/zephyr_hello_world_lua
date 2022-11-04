@@ -1,5 +1,5 @@
-#include <zephyr.h>
-#include <fs/fs.h>
+#include <zephyr/kernel.h>
+#include <zephyr/fs/fs.h>
 
 #include <stdio.h>
 #include <string.h>

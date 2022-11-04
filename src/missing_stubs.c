@@ -1,5 +1,7 @@
-#include <zephyr.h>
+#include <zephyr/fs/fs.h>
 #include <stdio.h>
+#include <errno.h>
+#include <sys/times.h>
 
 /* FIXME: this stubs should be properly implemented, in zephyr itself or here.
  * This is just a temporal non-working implementation to start testing lua with
@@ -17,9 +19,3 @@ int _unlink(const char *pathname)
 	return fs_unlink(pathname);
 }
 
-
-int _link(const char *oldpath, const char *newpath)
-{
-	errno = ENOSYS;
-	return -1;
-}
