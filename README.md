@@ -52,16 +52,24 @@ Hello from Lua
 Test Done!
 ```
 
-## Missing newlib stubs in Zephyr
+## Lua module for zephyr and missing stubs
 
-We had to add some implementation for two newlib stubs that seem not to be
-implemented by zephyr:
+This example has been adapted to use the still unofficial lua module for
+zephyr in [https://github.com/tenllado/](https://github.com/tenllado/).
 
-```c
-clock_t _times(struct tms* tms);
-int _unlink(const char *pathname);
-```
+The module right now requires you to provide the missing_stubs.c file found in
+this example, because of two problems in zephyr:
 
-These implementations are provided in the src/missing_stubs.c file. Any help to
-solve this issue will be appreciated.
+- a missing implementation of the ``_times()`` stub for the newlibc or a
+  modification of the clock() implementation that does not rely on ``_times()``.
+  This has already been reported to zephyr in [bug report 51978](https://github.com/zephyrproject-rtos/zephyr/issues/51978)
+
+- a missing implementation of the ``_unlink()`` stub in the newlibc. This has
+  been reported to zephyr in [bug report 51977](https://github.com/zephyrproject-rtos/zephyr/issues/51977)
+
+I plan to request the integration of the lua module in the zephyr project once
+these bug reports have been resolved, so that the missing_stubs.c file in this
+example is not needed anymore. In the mean time you can use the module like in
+this example.
+
 

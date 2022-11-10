@@ -3,14 +3,14 @@ manifest:
     - name: zephyrproject-rtos
       url-base: https://github.com/zephyrproject-rtos
     - name: lua
-      url-base: https://github.com/lua
+      url-base: https://github.com/tenllado/
 
   projects:
     - name: lua
       remote: lua
       repo-path: lua
-      revision: v5.4.4
-      path: app/lua
+      revision: zephyr
+      path: modules/lib/lua
     - name: zephyr
       remote: zephyrproject-rtos
       repo-path: zephyr
