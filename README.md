@@ -54,22 +54,30 @@ Test Done!
 
 ## Lua module for zephyr and missing stubs
 
-This example has been adapted to use the still unofficial lua module for
-zephyr in [https://github.com/tenllado/](https://github.com/tenllado/).
+This example has been adapted to use the still unofficial lua module for zephyr
+in [https://github.com/tenllado/](https://github.com/tenllado/). Lua is an ANSI
+C library, but the implementation of some of the functions it uses in picolib
+and newlib (the C libraries shipped with zephyr) currently depend on some POSIX
+symbols not provided by the POSIX_API in zephyr. Until these problems are solved
+the library provides weak *not supported* versions of these functions in the
+missing_stubs.c file. You can provide a better implementation on your project.
 
-The module right now requires you to provide the missing_stubs.c file found in
-this example, because of two problems in zephyr:
+The functions currently required depend on the libc choosed. For NEWLIB_LIBC
+three non supported stubs are provided:
 
-- a missing implementation of the ``_times()`` stub for the newlibc or a
-  modification of the clock() implementation that does not rely on ``_times()``.
-  This has already been reported to zephyr in [bug report 51978](https://github.com/zephyrproject-rtos/zephyr/issues/51978)
+- ``_open()``
+- ``_times()``
+- ``_unlink()``
 
-- a missing implementation of the ``_unlink()`` stub in the newlibc. This has
-  been reported to zephyr in [bug report 51977](https://github.com/zephyrproject-rtos/zephyr/issues/51977)
+In case of the PICOLIBC, only one function is missing:
 
-I plan to request the integration of the lua module in the zephyr project once
-these bug reports have been resolved, so that the missing_stubs.c file in this
-example is not needed anymore. In the mean time you can use the module like in
-this example.
+- ``times()`` 
 
+The latter case can be solved if pull request [57832](https://github.com/zephyrproject-rtos/zephyr/pull/57832)
+is accepted.
+
+Using PICOLIB requires and additional change in one header file of zephyr, as
+reported in pull request
+[57800](https://github.com/zephyrproject-rtos/zephyr/pull/57800).
+If these pull requests are accepted, using PICOLIBC would be the best option.
 
