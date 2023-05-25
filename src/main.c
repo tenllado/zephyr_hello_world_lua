@@ -8,7 +8,7 @@
 #include "lauxlib.h"
 #include "lualib.h"
 
-void main(void)
+int main(void)
 {
 	lua_State *L;
 
@@ -18,4 +18,6 @@ void main(void)
   	luaL_dostring(L, "print('Hello from Lua')");
 	lua_close(L);
 	printk("Test Done!\n");
+
+	return 0;
 }
